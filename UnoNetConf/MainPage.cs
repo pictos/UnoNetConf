@@ -11,7 +11,7 @@ public sealed partial class MainPage : Page
 		{ Comics, new ComicsPage() },
 		//{ Player, new PlayerPage() },
 		{ Search, new SearchPage() },
-		//{ XamlPage, new SearchPageXAML() }
+		{ XamlPage, new SearchPageXAML() }
 
 	}.AsReadOnly();
 	readonly Frame contentFrame;
@@ -25,6 +25,7 @@ public sealed partial class MainPage : Page
 			.MenuItems
 			(
 				new NavigationViewItem().Content(Comics),
+				new NavigationViewItem().Content(XamlPage),
 				new NavigationViewItem().Content(Search)
 			)
 			.Content
@@ -56,9 +57,9 @@ public sealed partial class MainPage : Page
 			case Comics:
 				contentFrame.Content = pages[Comics];
 				break;
-				//case XamlPage:
-				//	contentFrame.Content = pages[XamlPage];
-				//	break;
+			case XamlPage:
+				contentFrame.Content = pages[XamlPage];
+				break;
 		}
 	}
 }
