@@ -64,4 +64,10 @@
   <ItemGroup>
 	<UnoImage Include="Assets\**\*.svg" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Assets\Fonts\fa-brands-400.ttf" />
+    <Content Remove="Assets\Fonts\fa-regular-400.ttf" />
+    <Content Remove="Assets\Fonts\fa-solid-900.ttf" />
+  </ItemGroup>
 </Project>

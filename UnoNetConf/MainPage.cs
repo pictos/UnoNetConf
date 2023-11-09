@@ -9,7 +9,7 @@ public sealed partial class MainPage : Page
 	static readonly ReadOnlyDictionary<AppPages, Page> pages = new Dictionary<AppPages, Page>()
 	{
 		{ Comics, new ComicsPage() },
-		//{ Player, new PlayerPage() },
+		{ Player, new PlayerPage() },
 		{ Search, new SearchPage() },
 		{ XamlPage, new SearchPageXAML() }
 
@@ -24,9 +24,11 @@ public sealed partial class MainPage : Page
 			.PaneDisplayMode(NavigationViewPaneDisplayMode.LeftMinimal)
 			.MenuItems
 			(
+			                   // These values came from AppPages enum
 				new NavigationViewItem().Content(Comics),
+				new NavigationViewItem().Content(Search),
 				new NavigationViewItem().Content(XamlPage),
-				new NavigationViewItem().Content(Search)
+				new NavigationViewItem().Content(Player)
 			)
 			.Content
 			(
@@ -51,9 +53,9 @@ public sealed partial class MainPage : Page
 			case Search:
 				contentFrame.Content = pages[Search];
 				break;
-				//case Player:
-				//	contentFrame.Content = pages[Player];
-				//break;
+			case Player:
+				contentFrame.Content = pages[Player];
+				break;
 			case Comics:
 				contentFrame.Content = pages[Comics];
 				break;

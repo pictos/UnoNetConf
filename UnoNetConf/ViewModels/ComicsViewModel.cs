@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace UnoNetConf.ViewModels;
 sealed partial class ComicsViewModel : ObservableObject
 {
 	const string comicUrl = "https://imgs.xkcd.com/comics/standards_2x.png";
 
+	const string twitterImg = "ms-appx:///UnoNetConf/Assets/Images/twitter_img.jpg";
+
 	[ObservableProperty]
-	string imageUrl = comicUrl;
+	string imageUrl = comicUrl; 
 
 	int index = 0;
 
@@ -19,6 +15,7 @@ sealed partial class ComicsViewModel : ObservableObject
 	{
 		ImageUrl = ++index switch
 		{
+			1 => twitterImg,
 			_ => Reset()
 		};
 	}

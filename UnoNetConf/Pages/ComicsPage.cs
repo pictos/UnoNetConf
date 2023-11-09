@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace UnoNetConf.Pages;
 sealed partial class ComicsPage : Page
 {
@@ -11,18 +5,35 @@ sealed partial class ComicsPage : Page
 	{
 		this.DataContext(new ComicsViewModel(), (page, vm) =>
 		{
-			page.Padding(58)
-				.Background(Colors.Fuchsia)
-				.Content
-				(
-					new Image()
-						.Source(() => vm.ImageUrl)
-						.HorizontalAlignment(HorizontalAlignment.Center)
-						.VerticalAlignment(VerticalAlignment.Center)
-						// .Height(300)
-						// .Width(300)
-						.Stretch(Stretch.Uniform)
-				);
+			page
+#if ANDROID
+			.Padding(28)
+#else
+			.Padding(58)
+#endif
+			.Background(ThemeResource.Get<Brush>("ApplicationPageBackgroundThemeBrush"))
+			.Content
+			(
+				new Grid()
+					.RowDefinitions("*,Auto")
+					.RowSpacing(16)
+					.Children
+					(
+						new Image()
+							.Source(() => vm.ImageUrl)
+							.HorizontalAlignment(HorizontalAlignment.Center)
+							.VerticalAlignment(VerticalAlignment.Center)
+							.Stretch(Stretch.Uniform),
+						new Button()
+							.Content("NEXT")
+							.HorizontalAlignment(HorizontalAlignment.Center)
+							.VerticalAlignment(VerticalAlignment.Center)
+							.Command(() => vm.ChangeExecuteCommand)
+							.Grid(row: 1)
+							.Width(600)
+							.Margin(10)
+					)
+			);
 		});
 	}
 }

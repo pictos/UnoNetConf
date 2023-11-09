@@ -19,7 +19,6 @@ partial class SearchPage : Page
 		});
 	}
 
-
 	Grid MainContent(SearchViewModel vm)
 	{
 		new Grid()
