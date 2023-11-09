@@ -1,0 +1,10 @@
+{
+  "background_color": "#ffffff",
+  "description": "UnoNetConf",
+  "display": "standalone",
+  "name": "UnoNetConf",
+  "short_name": "UnoNetConf",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "scope": "/"
+}
