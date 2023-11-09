@@ -39,17 +39,6 @@ public sealed partial class MainPage : Page
 		navigationView.SelectedItem(navigationView.MenuItems[0]);
 
 		this.Content(navigationView);
-
-
-		//this
-		//    .Background(ThemeResource.Get<Brush>("ApplicationPageBackgroundThemeBrush"))
-		//    .Content(new StackPanel()
-		//    .VerticalAlignment(VerticalAlignment.Center)
-		//    .HorizontalAlignment(HorizontalAlignment.Center)
-		//    .Children(
-		//        new TextBlock()
-		//            .Text("Hello Uno Platform!")
-		//    ));
 	}
 
 	void OnShellSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
