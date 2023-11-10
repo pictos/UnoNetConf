@@ -8,7 +8,7 @@ public sealed partial class MainPage : Page
 {
 	static readonly ReadOnlyDictionary<AppPages, Page> pages = new Dictionary<AppPages, Page>()
 	{
-		{ Comics, new ComicsPage() },
+		{ Playground, new PlaygroundPage() },
 		{ Player, new PlayerPage() },
 		{ Search, new SearchPage() },
 		{ XamlPage, new SearchPageXAML() }
@@ -25,7 +25,7 @@ public sealed partial class MainPage : Page
 			.MenuItems
 			(
 			                   // These values came from AppPages enum
-				new NavigationViewItem().Content(Comics),
+				new NavigationViewItem().Content(Playground),
 				new NavigationViewItem().Content(Search),
 				new NavigationViewItem().Content(XamlPage),
 				new NavigationViewItem().Content(Player)
@@ -56,8 +56,8 @@ public sealed partial class MainPage : Page
 			case Player:
 				contentFrame.Content = pages[Player];
 				break;
-			case Comics:
-				contentFrame.Content = pages[Comics];
+			case Playground:
+				contentFrame.Content = pages[Playground];
 				break;
 			case XamlPage:
 				contentFrame.Content = pages[XamlPage];
@@ -70,6 +70,6 @@ enum AppPages
 {
 	Player,
 	Search,
-	Comics,
+	Playground,
 	XamlPage
 }

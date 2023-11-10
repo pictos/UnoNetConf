@@ -1,9 +1,11 @@
 using UnoNetConf.Pages;
+using Windows.Foundation;
 
 namespace UnoNetConf;
 
 public class App : Application
 {
+	internal static Rect Bounds { get; private set; }
 	protected Window? MainWindow { get; private set; }
 
 	protected override void OnLaunched(LaunchActivatedEventArgs args)
@@ -17,7 +19,7 @@ public class App : Application
 #if DEBUG
 		MainWindow.EnableHotReload();
 #endif
-
+		Bounds = MainWindow.Bounds;
 
 		// Do not repeat app initialization when the Window already has content,
 		// just ensure that the window is active
