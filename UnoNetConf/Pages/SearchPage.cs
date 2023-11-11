@@ -1,11 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnoNetConf.ViewModels;
-
 namespace UnoNetConf.Pages;
 partial class SearchPage : Page
 {
@@ -35,42 +27,22 @@ partial class SearchPage : Page
 					.Grid(rowSpan: 3),
 				new TextBox()
 					.PlaceholderText("Search...")
-					.Grid(row: 0, column: 0)
-					.Foreground(Colors.Black)
+					.Grid(row: PageRows.Search, column: 0)
+					.Foreground(Colors.White)
 					.Margin(5)
 					.Text(x => x.Bind(() => vm.Query).Mode(BindingMode.TwoWay))
 					.Assign(out var txtBlock),
 				new ListView()
 					.ItemsSource(() => vm.Results)
-					.Grid(row: 1, column: 0)
+					.Grid(row: PageRows.ListView, column: 0)
+					.MyCustomVisibility(() => vm.SearchExecuteCommand.IsRunning)
 					.Visibility(builder => SetVisibility(builder, vm))
-					.ItemTemplate<SearchResult>
-					(result =>
-
-					new Grid().Children
-						(
-							new Image().Source(() => result.AlbumUrl).Grid(row: 0, rowSpan: 2)
-								.Stretch(Stretch.Uniform),
-							new StackPanel()
-								.Padding(5)
-								.Background("#99000000")
-								.Children
-								(
-									new TextBlock()
-										.Text(() => result.Title)
-										.Foreground(Colors.White)
-										.VerticalAlignment(VerticalAlignment.Center)
-										.TextWrapping(TextWrapping.WrapWholeWords),
-									new TextBlock().Foreground(Colors.White).Text(() => result.Duration)
-								).Grid(1, 0)
-						).RowDefinitions("* , auto")
-						.RowSpacing(16)
-					),
+					.ItemTemplate<SearchResult>(result => new MediaCell()),
 				new Button()
 					.Content("Search")
-					.Grid(row: 2, column: 0)
+					.Grid(row: PageRows.Button, column: 0)
 					.MinWidth(100)
-					.HorizontalAlignment(HorizontalAlignment.Center)
+					.HorizontalAlignment(HorizontalAlignment.Stretch)
 					.Assign(out var btn)
 					.Command(() => vm.SearchExecuteCommand)
 					.Margin(10)
@@ -86,4 +58,12 @@ partial class SearchPage : Page
 		.Bind(() => vm.SearchExecuteCommand.IsRunning)
 		.Convert(x => x ? Visibility.Collapsed : Visibility.Visible);
 	}
+
+	enum PageRows
+	{
+		Search = 0,
+		ListView = 1,
+		Button = 2
+	}
+
 }
