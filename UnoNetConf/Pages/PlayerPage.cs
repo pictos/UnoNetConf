@@ -33,12 +33,16 @@ partial class PlayerPage : Page
 		});
 	}
 
+	enum PlayerRows
+	{
+		GridImg = 1
+	}
 
 	Grid MainContent(PlayerViewModel vm)
 	{
 		return new Grid().Children
 			(
-				GridImg(vm).Grid(row: 1)
+				GridImg(vm).Grid(PlayerRows.GridImg)
 
 			).RowDefinitions("100, *, 100");
 	}

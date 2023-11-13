@@ -20,7 +20,7 @@ static class Sugar
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static T Grid<T>(this T element, Enum row, int column)
+	public static T Grid<T>(this T element, Enum row, int column = 0)
 		where T : UIElement
 	{
 		return element.Grid(row: Convert.ToInt32(row), column: column);

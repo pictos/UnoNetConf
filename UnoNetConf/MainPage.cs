@@ -10,7 +10,6 @@ public sealed partial class MainPage : Page
 	{
 		{ Playground, new PlaygroundPage() },
 		{ Player, new PlayerPage() },
-		{ Search, new SearchPage() },
 		{ XamlPage, new SearchPageXAML() }
 
 	}.AsReadOnly();
@@ -26,7 +25,6 @@ public sealed partial class MainPage : Page
 			(
 			                   // These values came from AppPages enum
 				new NavigationViewItem().Content(Playground),
-				new NavigationViewItem().Content(Search),
 				new NavigationViewItem().Content(XamlPage),
 				new NavigationViewItem().Content(Player)
 			)
@@ -50,9 +48,6 @@ public sealed partial class MainPage : Page
 
 		switch ((AppPages)item.Content)
 		{
-			case Search:
-				contentFrame.Content = pages[Search];
-				break;
 			case Player:
 				contentFrame.Content = pages[Player];
 				break;
@@ -69,7 +64,6 @@ public sealed partial class MainPage : Page
 enum AppPages
 {
 	Player,
-	Search,
 	Playground,
 	XamlPage
 }
