@@ -95,14 +95,14 @@ partial class PlayerPage : Page
 			).RowDefinitions("*, 48")
 			.Assign(out Grid gridImg);
 
-	gridImg.SizeChanged += (_, __) =>
-		{
-			var size = Math.Min(gridImg.ActualWidth, gridImg.ActualHeight);
-	cicleImg.Width = size - 50;
-			circleP.Width = gridImg.ActualHeight + 20;
-			cicleImg.Invalidate();
-			circleP.Invalidate();
-		};
+			gridImg.SizeChanged += (_, __) =>
+			{
+				var size = Math.Min(gridImg.ActualWidth, gridImg.ActualHeight);
+				cicleImg.Width = size - 50;
+				circleP.Width = gridImg.ActualHeight + 20;
+				cicleImg.Invalidate();
+				circleP.Invalidate();
+			};
 
 		return gridImg;
 	}
